@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RulesList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SonarQube Java :: Documentation :: Custom Rules Example</a> &gt; <a href="index.source.html" class="el_package">org.sonar.samples.java</a> &gt; <span class="el_source">RulesList.java</span></div><h1>RulesList.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2012-2024 SonarSource SA - mailto:info AT sonarsource DOT com
+ * This code is released under [MIT No Attribution](https://opensource.org/licenses/MIT-0) license.
+ */
+package org.sonar.samples.java;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import org.sonar.plugins.java.api.JavaCheck;
+import org.sonar.samples.java.checks.*;
+
+public final class RulesList {
+
+  private RulesList() {
+  }
+
+  public static List&lt;Class&lt;? extends JavaCheck&gt;&gt; getChecks() {
+<span class="fc" id="L20">    List&lt;Class&lt;? extends JavaCheck&gt;&gt; checks = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L21">    checks.addAll(getJavaChecks());</span>
+<span class="fc" id="L22">    checks.addAll(getJavaTestChecks());</span>
+<span class="fc" id="L23">    return Collections.unmodifiableList(checks);</span>
+  }
+
+  /**
+   * These rules are going to target MAIN code only
+   */
+  public static List&lt;Class&lt;? extends JavaCheck&gt;&gt; getJavaChecks() {
+<span class="fc" id="L30">    return Collections.unmodifiableList(Arrays.asList(</span>
+      SpringControllerRequestMappingEntityRule.class,
+      AvoidAnnotationRule.class,
+      AvoidBrandInMethodNamesRule.class,
+      AvoidMethodDeclarationRule.class,
+      AvoidSuperClassRule.class,
+      AvoidTreeListRule.class,
+      MyCustomSubscriptionRule.class,
+      SecurityAnnotationMandatoryRule.class, OmniCustomCheck.class));
+  }
+
+  /**
+   * These rules are going to target TEST code only
+   */
+  public static List&lt;Class&lt;? extends JavaCheck&gt;&gt; getJavaTestChecks() {
+<span class="fc" id="L45">    return Collections.unmodifiableList(Arrays.asList(</span>
+      NoIfStatementInTestsRule.class));
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

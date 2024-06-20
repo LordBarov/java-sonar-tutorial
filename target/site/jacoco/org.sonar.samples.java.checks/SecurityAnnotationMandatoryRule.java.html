@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SecurityAnnotationMandatoryRule.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SonarQube Java :: Documentation :: Custom Rules Example</a> &gt; <a href="index.source.html" class="el_package">org.sonar.samples.java.checks</a> &gt; <span class="el_source">SecurityAnnotationMandatoryRule.java</span></div><h1>SecurityAnnotationMandatoryRule.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2012-2024 SonarSource SA - mailto:info AT sonarsource DOT com
+ * This code is released under [MIT No Attribution](https://opensource.org/licenses/MIT-0) license.
+ */
+package org.sonar.samples.java.checks;
+
+import java.util.List;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
+import org.sonar.check.Rule;
+import org.sonar.check.RuleProperty;
+import org.sonar.plugins.java.api.JavaFileScanner;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
+import org.sonar.plugins.java.api.tree.AnnotationTree;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.ClassTree;
+import org.sonar.plugins.java.api.tree.CompilationUnitTree;
+import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.IdentifierTree;
+import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
+import org.sonar.plugins.java.api.tree.MethodTree;
+import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
+import org.sonar.plugins.java.api.tree.Tree;
+import org.sonar.plugins.java.api.tree.TypeTree;
+
+@Rule(key = &quot;SecurityAnnotationMandatory&quot;)
+<span class="fc" id="L27">public class SecurityAnnotationMandatoryRule extends BaseTreeVisitor implements JavaFileScanner {</span>
+
+<span class="fc" id="L29">  private static final Logger LOGGER = Loggers.get(SecurityAnnotationMandatoryRule.class);</span>
+
+  private static final String DEFAULT_VALUE = &quot;MySecurityAnnotation&quot;;
+
+<span class="fc" id="L33">  private boolean implementsSpecificInterface = false;</span>
+
+  private JavaFileScannerContext context;
+
+  @RuleProperty(
+    defaultValue = DEFAULT_VALUE,
+    description = &quot;Name of the mandatory annotation&quot;)
+  protected String name;
+
+  @Override
+  public void scanFile(JavaFileScannerContext context) {
+<span class="fc" id="L44">    this.context = context;</span>
+<span class="fc" id="L45">    scan(context.getTree());</span>
+<span class="fc" id="L46">  }</span>
+
+  @Override
+  public void visitClass(ClassTree tree) {
+<span class="fc" id="L50">    implementsSpecificInterface = false;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    for (TypeTree typeTree : tree.superInterfaces()) {</span>
+<span class="fc" id="L52">      LOGGER.debug(&quot;implements Interface: {}&quot;, typeTree);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">      if (&quot;MySecurityInterface&quot;.equals(typeTree.toString())) {</span>
+<span class="fc" id="L54">        implementsSpecificInterface = true;</span>
+      }
+<span class="fc" id="L56">    }</span>
+
+<span class="fc" id="L58">    super.visitClass(tree);</span>
+<span class="fc" id="L59">  }</span>
+
+  @Override
+  public void visitCompilationUnit(CompilationUnitTree tree) {
+<span class="fc" id="L63">    PackageDeclarationTree packageDeclaration = tree.packageDeclaration();</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">    if (packageDeclaration != null) {</span>
+<span class="fc" id="L65">      printPackageName(packageDeclaration.packageName());</span>
+    }
+
+<span class="fc" id="L68">    super.visitCompilationUnit(tree);</span>
+<span class="fc" id="L69">  }</span>
+
+  private static void printPackageName(ExpressionTree packageName) {
+<span class="fc" id="L72">    StringBuilder sb = new StringBuilder();</span>
+<span class="fc" id="L73">    ExpressionTree expr = packageName;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">    while (expr.is(Tree.Kind.MEMBER_SELECT)) {</span>
+<span class="fc" id="L75">      MemberSelectExpressionTree mse = (MemberSelectExpressionTree) expr;</span>
+<span class="fc" id="L76">      sb.insert(0, mse.identifier().name());</span>
+<span class="fc" id="L77">      sb.insert(0, mse.operatorToken().text());</span>
+<span class="fc" id="L78">      expr = mse.expression();</span>
+<span class="fc" id="L79">    }</span>
+<span class="fc" id="L80">    IdentifierTree idt = (IdentifierTree) expr;</span>
+<span class="fc" id="L81">    sb.insert(0, idt.name());</span>
+
+<span class="fc" id="L83">    LOGGER.debug(&quot;PackageName: {}&quot;, sb);</span>
+<span class="fc" id="L84">  }</span>
+
+  @Override
+  public void visitMethod(MethodTree tree) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">    if (implementsSpecificInterface) {</span>
+<span class="fc" id="L89">      List&lt;AnnotationTree&gt; annotations = tree.modifiers().annotations();</span>
+
+<span class="fc" id="L91">      boolean isHavingMandatoryAnnotation = Boolean.FALSE;</span>
+
+<span class="fc bfc" id="L93" title="All 2 branches covered.">      for (AnnotationTree annotationTree : annotations) {</span>
+<span class="fc" id="L94">        TypeTree annotationType = annotationTree.annotationType();</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (annotationType.is(Tree.Kind.IDENTIFIER)) {</span>
+<span class="fc" id="L96">          String annotationName = ((IdentifierTree) annotationType).name();</span>
+<span class="fc" id="L97">          LOGGER.debug(&quot;Method Name {}&quot;, annotationName);</span>
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">          if (annotationName.equals(name)) {</span>
+<span class="fc" id="L100">            isHavingMandatoryAnnotation = Boolean.TRUE;</span>
+          }
+        }
+<span class="fc" id="L103">      }</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">      if (!isHavingMandatoryAnnotation) {</span>
+        // report on the method name, not on everything
+<span class="fc" id="L106">        context.reportIssue(this, tree.simpleName(), String.format(&quot;Mandatory Annotation not set @%s&quot;, name));</span>
+      }
+
+    }
+    // The call to the super implementation allows to continue the visit of the AST.
+    // Be careful to always call this method to visit every node of the tree.
+<span class="fc" id="L112">    super.visitMethod(tree);</span>
+<span class="fc" id="L113">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

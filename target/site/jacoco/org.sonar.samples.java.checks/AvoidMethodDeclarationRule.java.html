@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AvoidMethodDeclarationRule.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SonarQube Java :: Documentation :: Custom Rules Example</a> &gt; <a href="index.source.html" class="el_package">org.sonar.samples.java.checks</a> &gt; <span class="el_source">AvoidMethodDeclarationRule.java</span></div><h1>AvoidMethodDeclarationRule.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2012-2024 SonarSource SA - mailto:info AT sonarsource DOT com
+ * This code is released under [MIT No Attribution](https://opensource.org/licenses/MIT-0) license.
+ */
+package org.sonar.samples.java.checks;
+
+import org.sonar.check.Rule;
+import org.sonar.plugins.java.api.JavaFileScanner;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.MethodTree;
+
+/**
+ * This class is an example of how to implement your own rules.
+ * The (stupid) rule raises a minor issue each time a method is encountered.
+ */
+@Rule(key = &quot;AvoidMethodDeclaration&quot;)
+/**
+ * The class extends BaseTreeVisitor: the visitor for the Java AST.
+ * The logic of the rule is implemented by overriding its methods.
+ * It also implements the JavaFileScanner interface to be injected with the JavaFileScannerContext to attach issues to this context.
+ */
+<span class="fc" id="L23">public class AvoidMethodDeclarationRule extends BaseTreeVisitor implements JavaFileScanner {</span>
+
+  /**
+   * Private field to store the context: this is the object used to create issues.
+   */
+  private JavaFileScannerContext context;
+
+  /**
+   * Implementation of the method of the JavaFileScanner interface.
+   * @param context Object used to attach issues to source file.
+   */
+  @Override
+  public void scanFile(JavaFileScannerContext context) {
+<span class="fc" id="L36">    this.context = context;</span>
+
+    // The call to the scan method on the root of the tree triggers the visit of the AST by this visitor
+<span class="fc" id="L39">    scan(context.getTree());</span>
+<span class="fc" id="L40">  }</span>
+
+  /**
+   * Overriding the visitor method to implement the logic of the rule.
+   * @param tree AST of the visited method.
+   */
+  @Override
+  public void visitMethod(MethodTree tree) {
+    // All the code located before the call to the overridden method is executed before visiting the node
+
+    // Adds an issue by attaching it with the tree and the rule
+<span class="fc" id="L51">    context.reportIssue(this, tree, &quot;Avoid declaring methods (don't ask why)&quot;);</span>
+
+    // The call to the super implementation allows to continue the visit of the AST.
+    // Be careful to always call this method to visit every node of the tree.
+<span class="fc" id="L55">    super.visitMethod(tree);</span>
+
+    // All the code located after the call to the overridden method is executed when leaving the node
+<span class="fc" id="L58">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

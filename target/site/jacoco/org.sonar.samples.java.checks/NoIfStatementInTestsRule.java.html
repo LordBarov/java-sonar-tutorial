@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NoIfStatementInTestsRule.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SonarQube Java :: Documentation :: Custom Rules Example</a> &gt; <a href="index.source.html" class="el_package">org.sonar.samples.java.checks</a> &gt; <span class="el_source">NoIfStatementInTestsRule.java</span></div><h1>NoIfStatementInTestsRule.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2012-2024 SonarSource SA - mailto:info AT sonarsource DOT com
+ * This code is released under [MIT No Attribution](https://opensource.org/licenses/MIT-0) license.
+ */
+package org.sonar.samples.java.checks;
+
+import java.util.Arrays;
+import java.util.List;
+import org.sonar.check.Rule;
+import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.BlockTree;
+import org.sonar.plugins.java.api.tree.ClassTree;
+import org.sonar.plugins.java.api.tree.IfStatementTree;
+import org.sonar.plugins.java.api.tree.LambdaExpressionTree;
+import org.sonar.plugins.java.api.tree.MethodTree;
+import org.sonar.plugins.java.api.tree.Tree;
+
+@Rule(key = &quot;NoIfStatementInTests&quot;)
+/**
+ * To use subscription visitor, just extend the IssuableSubscriptionVisitor.
+ */
+<span class="fc" id="L23">public class NoIfStatementInTestsRule extends IssuableSubscriptionVisitor {</span>
+
+<span class="fc" id="L25">  private final BaseTreeVisitor ifStatementVisitor = new IfStatementVisitor();</span>
+
+  /**
+   * Unit tests are special methods, so we are just going to visit all of them.
+   */
+  @Override
+  public List&lt;Tree.Kind&gt; nodesToVisit() {
+<span class="fc" id="L32">    return Arrays.asList(Tree.Kind.METHOD);</span>
+  }
+
+  @Override
+  public void visitNode(Tree tree) {
+<span class="fc" id="L37">    MethodTree method = (MethodTree) tree;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">    if (!isJunit4TestMethod(method)) {</span>
+      // any other method which is not a test
+<span class="fc" id="L40">      return;</span>
+    }
+<span class="fc" id="L42">    BlockTree block = method.block();</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">    if (block == null) {</span>
+      // an abstract test method maybe?
+<span class="fc" id="L45">      return;</span>
+    }
+<span class="fc" id="L47">    block.accept(ifStatementVisitor);</span>
+<span class="fc" id="L48">  }</span>
+
+  /**
+   * Checks that a give method is annotated with JUnit4 'org.junit.Test' annotation
+   */
+  private static boolean isJunit4TestMethod(MethodTree method) {
+<span class="fc" id="L54">    return method.symbol()</span>
+<span class="fc" id="L55">      .metadata()</span>
+<span class="fc" id="L56">      .isAnnotatedWith(&quot;org.junit.Test&quot;);</span>
+  }
+
+<span class="fc" id="L59">  private class IfStatementVisitor extends BaseTreeVisitor {</span>
+
+    @Override
+    public void visitIfStatement(IfStatementTree tree) {
+      // report an issue on any &quot;if&quot; it finds
+<span class="fc" id="L64">      reportIssue(tree.ifKeyword(), &quot;Remove this 'if' statement from this test.&quot;);</span>
+<span class="fc" id="L65">      super.visitIfStatement(tree);</span>
+<span class="fc" id="L66">    }</span>
+
+    @Override
+    public void visitLambdaExpression(LambdaExpressionTree lambdaExpressionTree) {
+      // skip lambdas
+<span class="fc" id="L71">    }</span>
+
+    @Override
+    public void visitClass(ClassTree tree) {
+      // skip inner or anonymous classes
+<span class="fc" id="L76">    }</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

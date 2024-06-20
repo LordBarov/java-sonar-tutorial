@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AvoidBrandInMethodNamesRule.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SonarQube Java :: Documentation :: Custom Rules Example</a> &gt; <a href="index.source.html" class="el_package">org.sonar.samples.java.checks</a> &gt; <span class="el_source">AvoidBrandInMethodNamesRule.java</span></div><h1>AvoidBrandInMethodNamesRule.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2012-2024 SonarSource SA - mailto:info AT sonarsource DOT com
+ * This code is released under [MIT No Attribution](https://opensource.org/licenses/MIT-0) license.
+ */
+package org.sonar.samples.java.checks;
+
+import java.util.Locale;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
+import org.sonar.check.Rule;
+import org.sonar.plugins.java.api.JavaFileScanner;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.MethodTree;
+import org.sonar.samples.java.utils.PrinterVisitor;
+
+@Rule(key = &quot;AvoidBrandInMethodNames&quot;)
+<span class="fc" id="L18">public class AvoidBrandInMethodNamesRule extends BaseTreeVisitor implements JavaFileScanner {</span>
+
+<span class="fc" id="L20">  private static final Logger LOGGER = Loggers.get(AvoidBrandInMethodNamesRule.class);</span>
+
+  private JavaFileScannerContext context;
+
+  protected static final String COMPANY_NAME = &quot;MyCompany&quot;;
+
+  @Override
+  public void scanFile(JavaFileScannerContext context) {
+<span class="fc" id="L28">    this.context = context;</span>
+
+    // The call to the scan method on the root of the tree triggers the visit of the AST by this visitor
+<span class="fc" id="L31">    scan(context.getTree());</span>
+
+    // For debugging purpose, you can print out the entire AST of the analyzed file
+    // In production, this will display all the syntax trees, as soon as the log level is set to DEBUG
+<span class="fc" id="L35">    PrinterVisitor.print(context.getTree(), LOGGER::debug);</span>
+<span class="fc" id="L36">  }</span>
+
+  /**
+   * Overriding the visitor method to implement the logic of the rule.
+   * @param tree AST of the visited method.
+   */
+  @Override
+  public void visitMethod(MethodTree tree) {
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">    if (tree.simpleName().name().toUpperCase(Locale.ROOT).contains(COMPANY_NAME.toUpperCase(Locale.ROOT))) {</span>
+      // Adds an issue by attaching it with the tree and the rule
+<span class="fc" id="L47">      context.reportIssue(this, tree, &quot;Avoid using Brand in method name&quot;);</span>
+    }
+    // The call to the super implementation allows to continue the visit of the AST.
+    // Be careful to always call this method to visit every node of the tree.
+<span class="fc" id="L51">    super.visitMethod(tree);</span>
+
+    // All the code located after the call to the overridden method is executed when leaving the node
+<span class="fc" id="L54">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PrinterVisitor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SonarQube Java :: Documentation :: Custom Rules Example</a> &gt; <a href="index.source.html" class="el_package">org.sonar.samples.java.utils</a> &gt; <span class="el_source">PrinterVisitor.java</span></div><h1>PrinterVisitor.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2012-2024 SonarSource SA - mailto:info AT sonarsource DOT com
+ * This code is released under [MIT No Attribution](https://opensource.org/licenses/MIT-0) license.
+ */
+package org.sonar.samples.java.utils;
+
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.Tree;
+
+public class PrinterVisitor extends BaseTreeVisitor {
+  private static final int INDENT_SPACES = 2;
+
+  private final StringBuilder sb;
+  private int indentLevel;
+
+<span class="fc" id="L19">  public PrinterVisitor() {</span>
+<span class="fc" id="L20">    sb = new StringBuilder();</span>
+<span class="fc" id="L21">    indentLevel = 0;</span>
+<span class="fc" id="L22">  }</span>
+
+  public static void print(Tree tree, Consumer&lt;String&gt; output) {
+<span class="fc" id="L25">    PrinterVisitor pv = new PrinterVisitor();</span>
+<span class="fc" id="L26">    pv.scan(tree);</span>
+<span class="fc" id="L27">    output.accept(pv.sb.toString());</span>
+<span class="fc" id="L28">  }</span>
+
+  private StringBuilder indent() {
+<span class="fc" id="L31">    return sb.append(StringUtils.spaces(INDENT_SPACES * indentLevel));</span>
+  }
+
+  @Override
+  protected void scan(List&lt;? extends Tree&gt; trees) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    if (!trees.isEmpty()) {</span>
+<span class="fc" id="L37">      sb.deleteCharAt(sb.length() - 1);</span>
+<span class="fc" id="L38">      sb.append(&quot; : [\n&quot;);</span>
+<span class="fc" id="L39">      super.scan(trees);</span>
+<span class="fc" id="L40">      indent().append(&quot;]\n&quot;);</span>
+    }
+<span class="fc" id="L42">  }</span>
+
+  @Override
+  protected void scan(@Nullable Tree tree) {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">    if (tree != null) {</span>
+<span class="fc" id="L47">      Class&lt;?&gt;[] interfaces = tree.getClass().getInterfaces();</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">      if (interfaces.length &gt; 0) {</span>
+<span class="fc" id="L49">        indent().append(interfaces[0].getSimpleName()).append(&quot;\n&quot;);</span>
+      }
+    }
+<span class="fc" id="L52">    indentLevel++;</span>
+<span class="fc" id="L53">    super.scan(tree);</span>
+<span class="fc" id="L54">    indentLevel--;</span>
+<span class="fc" id="L55">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

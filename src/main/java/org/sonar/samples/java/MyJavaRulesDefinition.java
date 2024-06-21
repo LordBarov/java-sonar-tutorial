@@ -21,8 +21,8 @@ public class MyJavaRulesDefinition implements RulesDefinition {
   // don't change that because the path is hard coded in CheckVerifier
   private static final String RESOURCE_BASE_PATH = "org/sonar/l10n/java/rules/java";
 
-  public static final String REPOSITORY_KEY = "omni-sonar";
-  public static final String REPOSITORY_NAME = "Omni Team Plugin";
+  public static final String REPOSITORY_KEY = "sonar-plugin-habr";
+  public static final String REPOSITORY_NAME = "Habr Guide Plugin";
 
   // Add the rule keys of the rules which need to be considered as template-rules
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();

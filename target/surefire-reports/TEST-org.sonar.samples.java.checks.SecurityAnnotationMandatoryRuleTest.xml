@@ -1,72 +1,444 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest" time="0.021" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest" time="0.724" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="C:\Users\Арнур\Desktop\java-custom-rules-example\target\test-classes;C:\Users\Арнур\Desktop\java-custom-rules-example\target\classes;C:\Users\Арнур\.m2\repository\org\sonarsource\api\plugin\sonar-plugin-api\9.14.0.375\sonar-plugin-api-9.14.0.375.jar;C:\Users\Арнур\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\sonar-java-plugin\7.28.0.33738\sonar-java-plugin-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-surefire\7.28.0.33738\java-surefire-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\com\fasterxml\staxmate\staxmate\2.4.0\staxmate-2.4.0.jar;C:\Users\Арнур\.m2\repository\org\codehaus\woodstox\stax2-api\4.2.1\stax2-api-4.2.1.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-frontend\7.28.0.33738\java-frontend-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\jdt\7.28.0.33738\jdt-7.28.0.33738-shaded.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\sslr\sslr-core\1.24.0.633\sslr-core-1.24.0.633.jar;C:\Users\Арнур\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-regex-parsing\2.7.0.1482\sonar-regex-parsing-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-symbolic-execution\7.28.0.33738\java-symbolic-execution-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-checks\7.28.0.33738\java-checks-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-analyzer-recognizers\2.7.0.1482\sonar-analyzer-recognizers-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\external-reports\7.28.0.33738\external-reports-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-jsp\7.28.0.33738\java-jsp-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\embed\tomcat-embed-jasper\9.0.81\tomcat-embed-jasper-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\9.0.81\tomcat-embed-core-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\tomcat-annotations-api\9.0.81\tomcat-annotations-api-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\9.0.81\tomcat-embed-el-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-xml-parsing\2.7.0.1482\sonar-xml-parsing-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Арнур\.m2\repository\xerces\xercesImpl\2.12.2\xercesImpl-2.12.2.jar;C:\Users\Арнур\.m2\repository\xml-apis\xml-apis\1.4.01\xml-apis-1.4.01.jar;C:\Users\Арнур\.m2\repository\com\fasterxml\woodstox\woodstox-core\6.4.0\woodstox-core-6.4.0.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-performance-measure\2.7.0.1482\sonar-performance-measure-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-analyzer-commons\1.24.0.965\sonar-analyzer-commons-1.24.0.965.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-checks-testkit\7.28.0.33738\java-checks-testkit-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter\5.7.0\junit-jupiter-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Арнур\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.7.0\junit-jupiter-params-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-migrationsupport\5.7.0\junit-jupiter-migrationsupport-5.7.0.jar;C:\Users\Арнур\.m2\repository\junit\junit\4.13\junit-4.13.jar;C:\Users\Арнур\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Арнур\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Арнур\.m2\repository\org\assertj\assertj-core\3.23.1\assertj-core-3.23.1.jar;C:\Users\Арнур\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;"/>
+    <property name="java.class.path" value="/Users/admin/Desktop/java-sonar-tutorial/target/test-classes:/Users/admin/Desktop/java-sonar-tutorial/target/classes:/Users/admin/.m2/repository/org/sonarsource/api/plugin/sonar-plugin-api/9.14.0.375/sonar-plugin-api-9.14.0.375.jar:/Users/admin/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/admin/.m2/repository/org/sonarsource/java/sonar-java-plugin/7.28.0.33738/sonar-java-plugin-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-surefire/7.28.0.33738/java-surefire-7.28.0.33738.jar:/Users/admin/.m2/repository/com/fasterxml/staxmate/staxmate/2.4.0/staxmate-2.4.0.jar:/Users/admin/.m2/repository/org/codehaus/woodstox/stax2-api/4.2.1/stax2-api-4.2.1.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-frontend/7.28.0.33738/java-frontend-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/jdt/7.28.0.33738/jdt-7.28.0.33738-shaded.jar:/Users/admin/.m2/repository/org/sonarsource/sslr/sslr-core/1.24.0.633/sslr-core-1.24.0.633.jar:/Users/admin/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-regex-parsing/2.7.0.1482/sonar-regex-parsing-2.7.0.1482.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-symbolic-execution/7.28.0.33738/java-symbolic-execution-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-checks/7.28.0.33738/java-checks-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-analyzer-recognizers/2.7.0.1482/sonar-analyzer-recognizers-2.7.0.1482.jar:/Users/admin/.m2/repository/org/sonarsource/java/external-reports/7.28.0.33738/external-reports-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-jsp/7.28.0.33738/java-jsp-7.28.0.33738.jar:/Users/admin/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/9.0.81/tomcat-embed-jasper-9.0.81.jar:/Users/admin/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.81/tomcat-embed-core-9.0.81.jar:/Users/admin/.m2/repository/org/apache/tomcat/tomcat-annotations-api/9.0.81/tomcat-annotations-api-9.0.81.jar:/Users/admin/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.81/tomcat-embed-el-9.0.81.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-xml-parsing/2.7.0.1482/sonar-xml-parsing-2.7.0.1482.jar:/Users/admin/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/admin/.m2/repository/xerces/xercesImpl/2.12.2/xercesImpl-2.12.2.jar:/Users/admin/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar:/Users/admin/.m2/repository/com/fasterxml/woodstox/woodstox-core/6.4.0/woodstox-core-6.4.0.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-performance-measure/2.7.0.1482/sonar-performance-measure-2.7.0.1482.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-analyzer-commons/1.24.0.965/sonar-analyzer-commons-1.24.0.965.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-checks-testkit/7.28.0.33738/java-checks-testkit-7.28.0.33738.jar:/Users/admin/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter/5.7.0/junit-jupiter-5.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/admin/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/admin/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/admin/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-migrationsupport/5.7.0/junit-jupiter-migrationsupport-5.7.0.jar:/Users/admin/.m2/repository/junit/junit/4.13/junit-4.13.jar:/Users/admin/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/admin/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/admin/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/Users/admin/.m2/repository/net/bytebuddy/byte-buddy/1.12.10/byte-buddy-1.12.10.jar:"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="user.timezone" value="Asia/Qyzylorda"/>
-    <property name="user.country.format" value="KZ"/>
-    <property name="os.name" value="Windows 10"/>
+    <property name="os.name" value="Mac OS X"/>
     <property name="java.vm.specification.version" value="22"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="user.country" value="RU"/>
-    <property name="sun.boot.library.path" value="C:\Users\Арнур\.jdks\openjdk-22.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\Арнур\AppData\Local\Temp\surefire6311490361669721555\surefirebooter-20240617165842675_3.jar C:\Users\Арнур\AppData\Local\Temp\surefire6311490361669721555 2024-06-17T16-58-42_604-jvmRun1 surefire-20240617165842675_1tmp surefire_0-20240617165842675_2tmp"/>
+    <property name="user.country" value="KZ"/>
+    <property name="sun.boot.library.path" value="/Users/admin/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/admin/Desktop/java-sonar-tutorial/target/surefire/surefirebooter-20240621200935484_3.jar /Users/admin/Desktop/java-sonar-tutorial/target/surefire 2024-06-21T20-09-35_445-jvmRun1 surefire-20240621200935484_1tmp surefire_0-20240621200935484_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\Арнур\Desktop\java-custom-rules-example\target\test-classes;C:\Users\Арнур\Desktop\java-custom-rules-example\target\classes;C:\Users\Арнур\.m2\repository\org\sonarsource\api\plugin\sonar-plugin-api\9.14.0.375\sonar-plugin-api-9.14.0.375.jar;C:\Users\Арнур\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\sonar-java-plugin\7.28.0.33738\sonar-java-plugin-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-surefire\7.28.0.33738\java-surefire-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\com\fasterxml\staxmate\staxmate\2.4.0\staxmate-2.4.0.jar;C:\Users\Арнур\.m2\repository\org\codehaus\woodstox\stax2-api\4.2.1\stax2-api-4.2.1.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-frontend\7.28.0.33738\java-frontend-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\jdt\7.28.0.33738\jdt-7.28.0.33738-shaded.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\sslr\sslr-core\1.24.0.633\sslr-core-1.24.0.633.jar;C:\Users\Арнур\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-regex-parsing\2.7.0.1482\sonar-regex-parsing-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-symbolic-execution\7.28.0.33738\java-symbolic-execution-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-checks\7.28.0.33738\java-checks-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-analyzer-recognizers\2.7.0.1482\sonar-analyzer-recognizers-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\external-reports\7.28.0.33738\external-reports-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-jsp\7.28.0.33738\java-jsp-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\embed\tomcat-embed-jasper\9.0.81\tomcat-embed-jasper-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\9.0.81\tomcat-embed-core-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\tomcat-annotations-api\9.0.81\tomcat-annotations-api-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\9.0.81\tomcat-embed-el-9.0.81.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-xml-parsing\2.7.0.1482\sonar-xml-parsing-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Арнур\.m2\repository\xerces\xercesImpl\2.12.2\xercesImpl-2.12.2.jar;C:\Users\Арнур\.m2\repository\xml-apis\xml-apis\1.4.01\xml-apis-1.4.01.jar;C:\Users\Арнур\.m2\repository\com\fasterxml\woodstox\woodstox-core\6.4.0\woodstox-core-6.4.0.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-performance-measure\2.7.0.1482\sonar-performance-measure-2.7.0.1482.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\analyzer-commons\sonar-analyzer-commons\1.24.0.965\sonar-analyzer-commons-1.24.0.965.jar;C:\Users\Арнур\.m2\repository\org\sonarsource\java\java-checks-testkit\7.28.0.33738\java-checks-testkit-7.28.0.33738.jar;C:\Users\Арнур\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter\5.7.0\junit-jupiter-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Арнур\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.7.0\junit-jupiter-params-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;C:\Users\Арнур\.m2\repository\org\junit\jupiter\junit-jupiter-migrationsupport\5.7.0\junit-jupiter-migrationsupport-5.7.0.jar;C:\Users\Арнур\.m2\repository\junit\junit\4.13\junit-4.13.jar;C:\Users\Арнур\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Арнур\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Арнур\.m2\repository\org\assertj\assertj-core\3.23.1\assertj-core-3.23.1.jar;C:\Users\Арнур\.m2\repository\net\bytebuddy\byte-buddy\1.12.10\byte-buddy-1.12.10.jar;"/>
+    <property name="surefire.test.class.path" value="/Users/admin/Desktop/java-sonar-tutorial/target/test-classes:/Users/admin/Desktop/java-sonar-tutorial/target/classes:/Users/admin/.m2/repository/org/sonarsource/api/plugin/sonar-plugin-api/9.14.0.375/sonar-plugin-api-9.14.0.375.jar:/Users/admin/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/admin/.m2/repository/org/sonarsource/java/sonar-java-plugin/7.28.0.33738/sonar-java-plugin-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-surefire/7.28.0.33738/java-surefire-7.28.0.33738.jar:/Users/admin/.m2/repository/com/fasterxml/staxmate/staxmate/2.4.0/staxmate-2.4.0.jar:/Users/admin/.m2/repository/org/codehaus/woodstox/stax2-api/4.2.1/stax2-api-4.2.1.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-frontend/7.28.0.33738/java-frontend-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/jdt/7.28.0.33738/jdt-7.28.0.33738-shaded.jar:/Users/admin/.m2/repository/org/sonarsource/sslr/sslr-core/1.24.0.633/sslr-core-1.24.0.633.jar:/Users/admin/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-regex-parsing/2.7.0.1482/sonar-regex-parsing-2.7.0.1482.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-symbolic-execution/7.28.0.33738/java-symbolic-execution-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-checks/7.28.0.33738/java-checks-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-analyzer-recognizers/2.7.0.1482/sonar-analyzer-recognizers-2.7.0.1482.jar:/Users/admin/.m2/repository/org/sonarsource/java/external-reports/7.28.0.33738/external-reports-7.28.0.33738.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-jsp/7.28.0.33738/java-jsp-7.28.0.33738.jar:/Users/admin/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/9.0.81/tomcat-embed-jasper-9.0.81.jar:/Users/admin/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.81/tomcat-embed-core-9.0.81.jar:/Users/admin/.m2/repository/org/apache/tomcat/tomcat-annotations-api/9.0.81/tomcat-annotations-api-9.0.81.jar:/Users/admin/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.81/tomcat-embed-el-9.0.81.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-xml-parsing/2.7.0.1482/sonar-xml-parsing-2.7.0.1482.jar:/Users/admin/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/admin/.m2/repository/xerces/xercesImpl/2.12.2/xercesImpl-2.12.2.jar:/Users/admin/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar:/Users/admin/.m2/repository/com/fasterxml/woodstox/woodstox-core/6.4.0/woodstox-core-6.4.0.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-performance-measure/2.7.0.1482/sonar-performance-measure-2.7.0.1482.jar:/Users/admin/.m2/repository/org/sonarsource/analyzer-commons/sonar-analyzer-commons/1.24.0.965/sonar-analyzer-commons-1.24.0.965.jar:/Users/admin/.m2/repository/org/sonarsource/java/java-checks-testkit/7.28.0.33738/java-checks-testkit-7.28.0.33738.jar:/Users/admin/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter/5.7.0/junit-jupiter-5.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/admin/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/admin/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/admin/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:/Users/admin/.m2/repository/org/junit/jupiter/junit-jupiter-migrationsupport/5.7.0/junit-jupiter-migrationsupport-5.7.0.jar:/Users/admin/.m2/repository/junit/junit/4.13/junit-4.13.jar:/Users/admin/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/admin/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/admin/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/Users/admin/.m2/repository/net/bytebuddy/byte-buddy/1.12.10/byte-buddy-1.12.10.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\Арнур"/>
+    <property name="user.home" value="/Users/admin"/>
     <property name="user.language" value="ru"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2024-04-16"/>
-    <property name="java.home" value="C:\Users\Арнур\.jdks\openjdk-22.0.1"/>
-    <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\Арнур\Desktop\java-custom-rules-example"/>
+    <property name="java.home" value="/Users/admin/Library/Java/JavaVirtualMachines/openjdk-22.0.1/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/admin/Desktop/java-sonar-tutorial"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Арнур\AppData\Local\Temp\surefire6311490361669721555\surefirebooter-20240617165842675_3.jar"/>
-    <property name="user.script" value=""/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/admin/Desktop/java-sonar-tutorial/target/surefire/surefirebooter-20240621200935484_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="22.0.1+8-16"/>
-    <property name="user.name" value="Арнур"/>
-    <property name="stdout.encoding" value="UTF-8"/>
-    <property name="path.separator" value=";"/>
-    <property name="os.version" value="10.0"/>
+    <property name="user.name" value="admin"/>
+    <property name="stdout.encoding" value="US-ASCII"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.3"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\Арнур\.m2\repository"/>
+    <property name="localRepository" value="/Users/admin/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\5393~1\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2024.1.1"/>
+    <property name="java.io.tmpdir" value="/var/folders/6q/yg38j0n55l3ffyx46pbjcshr0000gn/T/"/>
+    <property name="idea.version" value="2023.2.5"/>
     <property name="java.version" value="22.0.1"/>
-    <property name="user.dir" value="C:\Users\Арнур\Desktop\java-custom-rules-example"/>
-    <property name="os.arch" value="amd64"/>
+    <property name="user.dir" value="/Users/admin/Desktop/java-sonar-tutorial"/>
+    <property name="os.arch" value="aarch64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="C:\Users\Арнур\.jdks\openjdk-22.0.1\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\Java\jre-1.8bin\;C:\Program Files\nodejs\;C:\apache-maven-3.9.8\bin;C:\Users\Арнур\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Арнур\AppData\Local\Programs\Python\Python310\;C:\Users\Арнур\scoop\shims;C:\Users\Арнур\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\Арнур\AppData\Local\Programs\Python\Python38\;C:\Users\Арнур\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Арнур\AppData\Local\Programs\Python\Python312\;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Lens\resources\cli\bin;C:\Users\Арнур\AppData\Roaming\npm;C:\gradle-8.7\bin;;."/>
+    <property name="native.encoding" value="US-ASCII"/>
+    <property name="java.library.path" value="/Users/admin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="stderr.encoding" value="US-ASCII"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="22.0.1+8-16"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="without_package_name" classname="org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest" time="0.012">
+  <testcase name="without_package_name" classname="org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest" time="0.704">
     <system-out><![CDATA[DEBUG implements Interface: MySecurityInterface
 DEBUG implements Interface: SecondInterface
 DEBUG Method Name MySecurityAnnotation
 ]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting javax/lang/model/SourceVersion with JaCoCo 0.8.10.202304240956/8ea9668.
+	at org.jacoco.agent.rt.internal_4a7f17c.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1113)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:665)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:700)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:669)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at org.eclipse.jdt.internal.compiler.batch.FileSystem.<clinit>(FileSystem.java:181)
+	at org.eclipse.jdt.internal.compiler.util.Util.collectPlatformLibraries(Util.java:1136)
+	at org.eclipse.jdt.internal.compiler.util.Util.collectVMBootclasspath(Util.java:1105)
+	at org.eclipse.jdt.internal.compiler.util.Util.collectRunningVMBootclasspath(Util.java:1109)
+	at org.eclipse.jdt.core.dom.ASTParser.getClasspath(ASTParser.java:244)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1248)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:868)
+	at org.sonar.java.model.JParser.parse(JParser.java:273)
+	at org.sonar.java.model.JParserConfig$FileByFile.parse(JParserConfig.java:268)
+	at org.sonar.java.model.JParserConfig$FileByFile.parse(JParserConfig.java:249)
+	at org.sonar.java.ast.JavaAstScanner.scan(JavaAstScanner.java:89)
+	at org.sonar.java.checks.verifier.internal.InternalCheckVerifier.verifyAll(InternalCheckVerifier.java:315)
+	at org.sonar.java.checks.verifier.internal.InternalCheckVerifier.verifyIssues(InternalCheckVerifier.java:256)
+	at org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest.without_package_name(SecurityAnnotationMandatoryRuleTest.java:46)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:688)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:210)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:206)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.io.IOException: Error while instrumenting javax/lang/model/SourceVersion with JaCoCo 0.8.10.202304240956/8ea9668.
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_4a7f17c.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 95 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 66
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 96 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting jdk/nio/zipfs/ZipFileSystemProvider with JaCoCo 0.8.10.202304240956/8ea9668.
+	at org.jacoco.agent.rt.internal_4a7f17c.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1113)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:621)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.base/java.lang.Class.forName(Class.java:620)
+	at java.base/java.lang.Class.forName(Class.java:595)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:855)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1080)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1305)
+	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1387)
+	at java.base/java.nio.file.spi.FileSystemProvider.loadInstalledProviders(FileSystemProvider.java:156)
+	at java.base/java.nio.file.spi.FileSystemProvider$1.run(FileSystemProvider.java:207)
+	at java.base/java.nio.file.spi.FileSystemProvider$1.run(FileSystemProvider.java:204)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
+	at java.base/java.nio.file.spi.FileSystemProvider.installedProviders(FileSystemProvider.java:204)
+	at java.base/java.nio.file.FileSystems.newFileSystem(FileSystems.java:336)
+	at java.base/java.nio.file.FileSystems.newFileSystem(FileSystems.java:288)
+	at org.eclipse.jdt.internal.compiler.util.JrtFileSystem.<init>(JRTUtil.java:507)
+	at org.eclipse.jdt.internal.compiler.util.JrtFileSystem.getNewJrtFileSystem(JRTUtil.java:488)
+	at org.eclipse.jdt.internal.compiler.util.JRTUtil.lambda$0(JRTUtil.java:151)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1710)
+	at org.eclipse.jdt.internal.compiler.util.JRTUtil.getJrtSystem(JRTUtil.java:149)
+	at org.eclipse.jdt.internal.compiler.util.JRTUtil.walkModuleImage(JRTUtil.java:241)
+	at org.eclipse.jdt.internal.compiler.batch.ClasspathJrt.lambda$1(ClasspathJrt.java:212)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1710)
+	at org.eclipse.jdt.internal.compiler.batch.ClasspathJrt.loadModules(ClasspathJrt.java:209)
+	at org.eclipse.jdt.internal.compiler.batch.ClasspathJrt.initialize(ClasspathJrt.java:205)
+	at org.eclipse.jdt.internal.compiler.batch.FileSystem.<init>(FileSystem.java:235)
+	at org.eclipse.jdt.internal.compiler.batch.FileSystem.<init>(FileSystem.java:285)
+	at org.eclipse.jdt.core.dom.NameEnvironmentWithProgress.<init>(NameEnvironmentWithProgress.java:36)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(CompilationUnitResolver.java:771)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1245)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:868)
+	at org.sonar.java.model.JParser.parse(JParser.java:273)
+	at org.sonar.java.model.JParserConfig$FileByFile.parse(JParserConfig.java:268)
+	at org.sonar.java.model.JParserConfig$FileByFile.parse(JParserConfig.java:249)
+	at org.sonar.java.ast.JavaAstScanner.scan(JavaAstScanner.java:89)
+	at org.sonar.java.checks.verifier.internal.InternalCheckVerifier.verifyAll(InternalCheckVerifier.java:315)
+	at org.sonar.java.checks.verifier.internal.InternalCheckVerifier.verifyIssues(InternalCheckVerifier.java:256)
+	at org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest.without_package_name(SecurityAnnotationMandatoryRuleTest.java:46)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:688)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:210)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:206)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.io.IOException: Error while instrumenting jdk/nio/zipfs/ZipFileSystemProvider with JaCoCo 0.8.10.202304240956/8ea9668.
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_4a7f17c.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 113 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 66
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 114 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting jdk/nio/zipfs/ZipFileSystem with JaCoCo 0.8.10.202304240956/8ea9668.
+	at org.jacoco.agent.rt.internal_4a7f17c.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1113)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:665)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3601)
+	at java.base/java.lang.Class.getDeclaredPublicMethods(Class.java:2874)
+	at java.base/java.lang.System$2.getDeclaredPublicMethods(System.java:2351)
+	at java.base/java.util.ServiceLoader.findStaticProviderMethod(ServiceLoader.java:617)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:881)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:1080)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1305)
+	at java.base/java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1387)
+	at java.base/java.nio.file.spi.FileSystemProvider.loadInstalledProviders(FileSystemProvider.java:156)
+	at java.base/java.nio.file.spi.FileSystemProvider$1.run(FileSystemProvider.java:207)
+	at java.base/java.nio.file.spi.FileSystemProvider$1.run(FileSystemProvider.java:204)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:319)
+	at java.base/java.nio.file.spi.FileSystemProvider.installedProviders(FileSystemProvider.java:204)
+	at java.base/java.nio.file.FileSystems.newFileSystem(FileSystems.java:336)
+	at java.base/java.nio.file.FileSystems.newFileSystem(FileSystems.java:288)
+	at org.eclipse.jdt.internal.compiler.util.JrtFileSystem.<init>(JRTUtil.java:507)
+	at org.eclipse.jdt.internal.compiler.util.JrtFileSystem.getNewJrtFileSystem(JRTUtil.java:488)
+	at org.eclipse.jdt.internal.compiler.util.JRTUtil.lambda$0(JRTUtil.java:151)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1710)
+	at org.eclipse.jdt.internal.compiler.util.JRTUtil.getJrtSystem(JRTUtil.java:149)
+	at org.eclipse.jdt.internal.compiler.util.JRTUtil.walkModuleImage(JRTUtil.java:241)
+	at org.eclipse.jdt.internal.compiler.batch.ClasspathJrt.lambda$1(ClasspathJrt.java:212)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1710)
+	at org.eclipse.jdt.internal.compiler.batch.ClasspathJrt.loadModules(ClasspathJrt.java:209)
+	at org.eclipse.jdt.internal.compiler.batch.ClasspathJrt.initialize(ClasspathJrt.java:205)
+	at org.eclipse.jdt.internal.compiler.batch.FileSystem.<init>(FileSystem.java:235)
+	at org.eclipse.jdt.internal.compiler.batch.FileSystem.<init>(FileSystem.java:285)
+	at org.eclipse.jdt.core.dom.NameEnvironmentWithProgress.<init>(NameEnvironmentWithProgress.java:36)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(CompilationUnitResolver.java:771)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1245)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:868)
+	at org.sonar.java.model.JParser.parse(JParser.java:273)
+	at org.sonar.java.model.JParserConfig$FileByFile.parse(JParserConfig.java:268)
+	at org.sonar.java.model.JParserConfig$FileByFile.parse(JParserConfig.java:249)
+	at org.sonar.java.ast.JavaAstScanner.scan(JavaAstScanner.java:89)
+	at org.sonar.java.checks.verifier.internal.InternalCheckVerifier.verifyAll(InternalCheckVerifier.java:315)
+	at org.sonar.java.checks.verifier.internal.InternalCheckVerifier.verifyIssues(InternalCheckVerifier.java:256)
+	at org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest.without_package_name(SecurityAnnotationMandatoryRuleTest.java:46)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:688)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:210)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:206)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.io.IOException: Error while instrumenting jdk/nio/zipfs/ZipFileSystem with JaCoCo 0.8.10.202304240956/8ea9668.
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_4a7f17c.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 117 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 66
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_4a7f17c.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_4a7f17c.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 118 more
+]]></system-err>
   </testcase>
-  <testcase name="detected" classname="org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest" time="0.008">
+  <testcase name="detected" classname="org.sonar.samples.java.checks.SecurityAnnotationMandatoryRuleTest" time="0.011">
     <system-out><![CDATA[DEBUG PackageName: company.demo
 DEBUG implements Interface: MySecurityInterface
 DEBUG implements Interface: SecondInterface

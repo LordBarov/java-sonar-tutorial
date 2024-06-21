@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.sonar.samples.java.checks.AvoidSuperClassRuleTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.270 s -- in org.sonar.samples.java.checks.AvoidSuperClassRuleTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.sonar.samples.java.checks.AvoidSuperClassRuleTest

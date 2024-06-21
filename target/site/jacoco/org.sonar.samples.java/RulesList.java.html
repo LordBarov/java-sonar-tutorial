@@ -26,23 +26,24 @@ public final class RulesList {
   /**
    * These rules are going to target MAIN code only
    */
-  public static List&lt;Class&lt;? extends JavaCheck&gt;&gt; getJavaChecks() {
+    public static List&lt;Class&lt;? extends JavaCheck&gt;&gt; getJavaChecks() {
 <span class="fc" id="L30">    return Collections.unmodifiableList(Arrays.asList(</span>
-      SpringControllerRequestMappingEntityRule.class,
-      AvoidAnnotationRule.class,
-      AvoidBrandInMethodNamesRule.class,
-      AvoidMethodDeclarationRule.class,
-      AvoidSuperClassRule.class,
-      AvoidTreeListRule.class,
-      MyCustomSubscriptionRule.class,
-      SecurityAnnotationMandatoryRule.class, OmniCustomCheck.class));
+            SpringControllerRequestMappingEntityRule.class,
+            AvoidAnnotationRule.class,
+            AvoidBrandInMethodNamesRule.class,
+            AvoidMethodDeclarationRule.class,
+            AvoidSuperClassRule.class,
+            AvoidTreeListRule.class,
+            MyCustomSubscriptionRule.class,
+            KebabCaseUrlCheck.class,
+            SecurityAnnotationMandatoryRule.class));
   }
 
   /**
    * These rules are going to target TEST code only
    */
   public static List&lt;Class&lt;? extends JavaCheck&gt;&gt; getJavaTestChecks() {
-<span class="fc" id="L45">    return Collections.unmodifiableList(Arrays.asList(</span>
+<span class="fc" id="L46">    return Collections.unmodifiableList(Arrays.asList(</span>
       NoIfStatementInTestsRule.class));
   }
 }

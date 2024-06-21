@@ -26,16 +26,17 @@ public final class RulesList {
   /**
    * These rules are going to target MAIN code only
    */
-  public static List<Class<? extends JavaCheck>> getJavaChecks() {
+    public static List<Class<? extends JavaCheck>> getJavaChecks() {
     return Collections.unmodifiableList(Arrays.asList(
-      SpringControllerRequestMappingEntityRule.class,
-      AvoidAnnotationRule.class,
-      AvoidBrandInMethodNamesRule.class,
-      AvoidMethodDeclarationRule.class,
-      AvoidSuperClassRule.class,
-      AvoidTreeListRule.class,
-      MyCustomSubscriptionRule.class,
-      SecurityAnnotationMandatoryRule.class));
+            SpringControllerRequestMappingEntityRule.class,
+            AvoidAnnotationRule.class,
+            AvoidBrandInMethodNamesRule.class,
+            AvoidMethodDeclarationRule.class,
+            AvoidSuperClassRule.class,
+            AvoidTreeListRule.class,
+            MyCustomSubscriptionRule.class,
+            KebabCaseUrlCheck.class,
+            SecurityAnnotationMandatoryRule.class));
   }
 
   /**

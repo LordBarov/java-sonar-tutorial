@@ -19,31 +19,33 @@ class MyJavaFileCheckRegistrarTest {
     MyJavaFileCheckRegistrar registrar = new MyJavaFileCheckRegistrar();
     registrar.register(context);
 
-    assertThat(context.mainRuleKeys).extracting(RuleKey::toString).containsExactly(
-      "omni-sonar:SpringControllerRequestMappingEntity",
-      "omni-sonar:AvoidAnnotation",
-      "omni-sonar:AvoidBrandInMethodNames",
-      "omni-sonar:AvoidMethodDeclaration",
-      "omni-sonar:AvoidSuperClass",
-      "omni-sonar:AvoidTreeList",
-      "omni-sonar:AvoidMethodWithSameTypeInArgument",
-      "omni-sonar:SecurityAnnotationMandatory");
+    assertThat(context.mainRuleKeys).extracting(RuleKey::toString).containsExactlyInAnyOrder(
+            "sonar-plugin-habr:SpringControllerRequestMappingEntity",
+            "sonar-plugin-habr:AvoidAnnotation",
+            "sonar-plugin-habr:AvoidBrandInMethodNames",
+            "sonar-plugin-habr:AvoidMethodDeclaration",
+            "sonar-plugin-habr:AvoidSuperClass",
+            "sonar-plugin-habr:AvoidTreeList",
+            "sonar-plugin-habr:AvoidMethodWithSameTypeInArgument",
+            "sonar-plugin-habr:KebabCaseUrlCheck",
+            "sonar-plugin-habr:SecurityAnnotationMandatory");
 
-    assertThat(context.mainCheckClasses).extracting(Class::getSimpleName).containsExactly(
-      "SpringControllerRequestMappingEntityRule",
-      "AvoidAnnotationRule",
-      "AvoidBrandInMethodNamesRule",
-      "AvoidMethodDeclarationRule",
-      "AvoidSuperClassRule",
-      "AvoidTreeListRule",
-      "MyCustomSubscriptionRule",
-      "SecurityAnnotationMandatoryRule");
+    assertThat(context.mainCheckClasses).extracting(Class::getSimpleName).containsExactlyInAnyOrder(
+            "SpringControllerRequestMappingEntityRule",
+            "AvoidAnnotationRule",
+            "AvoidBrandInMethodNamesRule",
+            "AvoidMethodDeclarationRule",
+            "AvoidSuperClassRule",
+            "AvoidTreeListRule",
+            "MyCustomSubscriptionRule",
+            "KebabCaseUrlCheck",
+            "SecurityAnnotationMandatoryRule");
 
     assertThat(context.testRuleKeys).extracting(RuleKey::toString).containsExactly(
-      "omni-sonar:NoIfStatementInTests");
+            "sonar-plugin-habr:NoIfStatementInTests");
 
     assertThat(context.testCheckClasses).extracting(Class::getSimpleName).containsExactly(
-      "NoIfStatementInTestsRule");
+            "NoIfStatementInTestsRule");
   }
 
 }

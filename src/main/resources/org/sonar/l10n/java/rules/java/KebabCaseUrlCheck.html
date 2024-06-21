@@ -1,0 +1,68 @@
+<h1>Kebab-Case URL Check</h1>
+<p>This rule ensures that the URLs in <code>@GetMapping</code>, <code>@PostMapping</code>, <code>@PutMapping</code>, and <code>@DeleteMapping</code> annotations are in kebab-case format.</p>
+
+<h2>Noncompliant Code Example</h2>
+<pre>
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
+public class MyController {
+
+    @GetMapping("/camelCaseUrl") // Noncompliant
+    public String getNonCompliant() {
+        return "noncompliant";
+    }
+
+    @PostMapping("/AnotherCamelCaseUrl") // Noncompliant
+    public void postNonCompliant() {
+    }
+
+    @PutMapping("/YetAnotherCamelCaseUrl") // Noncompliant
+    public void putNonCompliant() {
+    }
+
+    @DeleteMapping("/FinalCamelCaseUrl") // Noncompliant
+    public void deleteNonCompliant() {
+    }
+
+    @GetMapping("/nested/camelCaseUrl") // Noncompliant
+    public String getNestedNonCompliant() {
+        return "noncompliant";
+    }
+}
+    </pre>
+
+<h2>Compliant Solution</h2>
+<pre>
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
+public class MyController {
+
+    @GetMapping("/kebab-case-url") // Compliant
+    public String getCompliant() {
+        return "compliant";
+    }
+
+    @PostMapping("/another-kebab-case-url") // Compliant
+    public void postCompliant() {
+    }
+
+    @PutMapping("/yet-another-kebab-case-url") // Compliant
+    public void putCompliant() {
+    }
+
+    @DeleteMapping("/final-kebab-case-url") // Compliant
+    public void deleteCompliant() {
+    }
+
+    @GetMapping("/nested/kebab-case-url") // Compliant
+    public String getNestedCompliant() {
+        return "compliant";
+    }
+}
+</pre>

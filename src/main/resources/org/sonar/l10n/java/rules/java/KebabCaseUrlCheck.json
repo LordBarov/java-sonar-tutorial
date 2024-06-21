@@ -1,0 +1,11 @@
+{
+  "title": "URLs in @GetMapping, @PostMapping, @PutMapping, @DeleteMapping should be in kebab-case",
+  "type": "code_smell",
+  "status": "ready",
+  "tags": [
+    "convention",
+    "style",
+    "rest"
+  ],
+  "defaultSeverity": "Minor"
+}

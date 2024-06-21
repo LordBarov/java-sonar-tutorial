@@ -4,12 +4,12 @@ SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.c
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,NoIfStatementInTestsRule.IfStatementVisitor,0,18,0,0,0,6,0,4,0,4
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,AvoidTreeListRule,0,17,0,2,0,5,0,4,0,3
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,NoIfStatementInTestsRule,0,42,0,4,0,14,0,6,0,4
-SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,AvoidBrandInMethodNamesRule,0,43,0,2,0,10,0,5,0,4
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,MyCustomSubscriptionRule,0,37,0,4,0,10,0,5,0,3
+SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,AvoidBrandInMethodNamesRule,0,43,0,2,0,10,0,5,0,4
+SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,KebabCaseUrlCheck,5,124,5,15,2,26,5,10,0,5
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,SecurityAnnotationMandatoryRule,0,181,0,18,0,46,0,16,0,7
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,SpringControllerRequestMappingEntityRule,0,70,0,8,0,15,0,7,0,3
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,AvoidAnnotationRule,0,65,0,6,0,14,0,6,0,3
-SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.checks,OmniCustomCheck,0,38,0,4,0,10,0,5,0,3
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.utils,PrinterVisitor,0,94,0,6,0,23,0,8,0,5
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java.utils,StringUtils,0,27,0,6,0,5,0,5,0,2
 SonarQube Java :: Documentation :: Custom Rules Example,org.sonar.samples.java,MyJavaFileCheckRegistrar,0,13,0,0,0,5,0,4,0,4
